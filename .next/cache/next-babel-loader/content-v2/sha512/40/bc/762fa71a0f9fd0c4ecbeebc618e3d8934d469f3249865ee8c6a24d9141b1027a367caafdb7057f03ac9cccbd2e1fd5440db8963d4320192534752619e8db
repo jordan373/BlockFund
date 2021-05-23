@@ -1,0 +1,1 @@
+{"ast":null,"code":"// import React from 'react'\n// import Link from 'next/link'\n// import {useRouter} from 'next/router';\n// const getAddress = () => {\n//     const router = useRouter();\n//     const { address } = router.query;\n//     return (\n//         <div>{address}</div>\n//     )\n// }\n//export default getAddress;","map":null,"metadata":{},"sourceType":"script"}

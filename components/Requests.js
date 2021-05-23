@@ -78,7 +78,7 @@ export default function Requests({ usrAddress, usrRequests, usrReqCount, usrAppr
             <TableCell>Recipient</TableCell>
             <TableCell>Approvals</TableCell>
             <TableCell>Approve</TableCell>
-            <TableCell>Finalize</TableCell>
+            <TableCell>Complete</TableCell>
 
           </TableRow>
         </TableHead>
@@ -100,7 +100,7 @@ export default function Requests({ usrAddress, usrRequests, usrReqCount, usrAppr
               <TableCell >
               <ThemeProvider theme={theme}>
                 <Button variant="contained" align="center" color="primary" onClick={() => onFinalize(index)}>
-                  Finalize
+                  Complete
                 </Button>
               </ThemeProvider>
               </TableCell>

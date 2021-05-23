@@ -20,10 +20,10 @@ export default function ProjectBalance({ managerAddress, pBalance, minimumDonati
     <React.Fragment>
       <Title>Total Project Balance</Title>
       <Typography component="p" variant="h4">
-        ${pBalance}
+        wei: {pBalance}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        Minimum Donation: {minimumDonation}
+        Minimum Donation: {minimumDonation} wei
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
         

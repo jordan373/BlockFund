@@ -117,24 +117,26 @@ const onSubmit = async () => {
 return (
     <div className={classes.root}>
         <Box textAlign='center' m={4}>
-          
-          <Button onClick={onSubmit} variant="contained" align="center" className={buttonClassname} color="primary" disabled={loading}>
-            Make Donation
-          </Button>
-          <Backdrop className={classes.backdrop} open={open}>
-            <CircularProgress color="inherit" />
-          </Backdrop>
-          
-          <FormControl fullWidth className={classes.margin} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-amount">Donation amount</InputLabel>
+
+        <FormControl fullWidth className={classes.margin} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-amount">amount</InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
             value={values.amount}
             onChange={handleChange('amount')}
             startAdornment={<InputAdornment position="start">WEI</InputAdornment>}
-            labelWidth={125}
+            labelWidth={55}
           />
         </FormControl>
+          
+          <Button onClick={onSubmit} variant="contained" align="center" className={buttonClassname} color="primary" disabled={loading}>
+            Fund This Project
+          </Button>
+          <Backdrop className={classes.backdrop} open={open}>
+            <CircularProgress color="inherit" />
+          </Backdrop>
+          
+          
           </Box>
         
     </div>
