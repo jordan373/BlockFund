@@ -1,17 +1,26 @@
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
+pragma abicoder v2;
 
 contract ProjectManager {
-    address[] public deployedProjects;
+
+    struct ProjectInfo {
+        address addr;
+        string name;
+        string desc;
+    }
+    ProjectInfo[] public deployedProjects;
     
-    function createProject(uint min) public {
+    function createProject(uint min, string memory projectName, string memory projectDescription) public {
         Project newProject = new Project(msg.sender, min);
         address newProjAddr = address(newProject);
-        deployedProjects.push(newProjAddr);
+
+        ProjectInfo memory newProjInfo = ProjectInfo(newProjAddr, projectName, projectDescription);
+        deployedProjects.push(newProjInfo);
     }
     
-    function get_deployed_projects() public view returns (address[] memory) {
+    function get_deployed_projects() public view returns (ProjectInfo[] memory) {
         return deployedProjects;
     }
 }
