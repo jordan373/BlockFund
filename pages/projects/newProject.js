@@ -12,12 +12,10 @@ class ProjectNew extends Component {
     render() {
         return (
             <Layout>
-                <h3>Create a new Project</h3>
                 <Box>
                     <MinDonation>
                     </MinDonation>
                 </Box>
-                
             </Layout>
         )
     }

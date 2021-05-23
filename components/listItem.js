@@ -43,17 +43,5 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Favorite 1" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-      <FavoriteIcon />
-      </ListItemIcon>
-      <ListItemText primary="Favorite 2" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-      <FavoriteIcon />
-      </ListItemIcon>
-      <ListItemText primary="Favorite 3" />
-    </ListItem>
   </div>
 );

@@ -1,7 +1,11 @@
 {
+  "/": "pages/index.js",
+  "/projects/[address]/createRequest": "pages/projects/[address]/createRequest.js",
+  "/projects/[address]/dashboard": "pages/projects/[address]/dashboard.js",
+  "/projects/newProject": "pages/projects/newProject.html",
+  "/test": "pages/test.html",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/projects/[address]/createRequest": "pages/projects/[address]/createRequest.js",
-  "/projects/[address]/dashboard": "pages/projects/[address]/dashboard.js"
+  "/404": "pages/404.html"
 }

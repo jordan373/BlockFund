@@ -75,11 +75,13 @@ const CardsPage = (props) => {
   const router = useRouter();
   const classes = useStyles();
 
-  const featuredPosts = props.projects.map((address) => {
+  const featuredPosts = props.projects.map((addresses) => {
     return {
-      title: 'Featured project',
-      date: 'may 1 2021',
-      description: address
+      title: addresses.name,
+      date: 'may 23 2021',
+      description: addresses.desc,
+      address: addresses.addr,
+      images: 'https://source.unsplash.com/random'
     }
   })
 
@@ -142,11 +144,11 @@ const CardsPage = (props) => {
           <Grid container spacing={4}>
             {featuredPosts.map(post => (
               <Grid item key={post.title} xs={12} md={6}>
-              <Link as={`/projects/${post.description}/dashboard`} href={{
+              <Link as={`/projects/${post.address}/dashboard`} href={{
                 pathname: "/projects/[address]/dashboard",
                 query: {
                   title: post.title,
-                  address: post.description
+                  address: post.address
                 }
               }}>
                 <CardActionArea component="a">
@@ -162,6 +164,9 @@ const CardsPage = (props) => {
                         <Typography variant="subtitle1" paragraph>
                           {post.description}
                         </Typography>
+                        <Typography variant="subtitle1" paragraph>
+                          {post.address}
+                        </Typography>
                         
                           <Typography variant="subtitle1" color="primary">
                           
@@ -174,7 +179,7 @@ const CardsPage = (props) => {
                     <Hidden xsDown>
                       <CardMedia
                         className={classes.cardMedia}
-                        image="https://source.unsplash.com/bj8U389A9N8"
+                        image={post.images}
                         title="Image title"
                       />
                     </Hidden>

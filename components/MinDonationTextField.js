@@ -1,14 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import FilledInput from '@material-ui/core/FilledInput';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -21,21 +13,31 @@ import { green } from '@material-ui/core/colors';
 import Fab from '@material-ui/core/Fab';
 import { useRouter } from 'next/router'
 import Backdrop from '@material-ui/core/Backdrop';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Avatar from '@material-ui/core/Avatar';
+import PostAddTwoToneIcon from '@material-ui/icons/PostAddTwoTone';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    margin: {
-      margin: theme.spacing(1),
-    },
-    withoutLabel: {
-      marginTop: theme.spacing(3),
-    },
-    textField: {
-      width: '25ch',
-    },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
     buttonSuccess: {
       backgroundColor: green[500],
       '&:hover': {
@@ -82,6 +84,8 @@ export default function MinDonation() {
   
     const [values, setValues] = React.useState({
       amount: '',
+      name: '',
+      desc: ''
     });
 
 const handleChange = (prop) => (event) => {
@@ -96,7 +100,7 @@ const onSubmit = async () => {
     //const accounts;
     try {
       const accounts = await web3.eth.getAccounts();
-      await instance.methods.createProject(values.amount).send({
+      await instance.methods.createProject(values.amount, values.name, values.desc).send({
       from: accounts[0]
     });
     console.log(accounts[0]);
@@ -122,7 +126,7 @@ const onSubmit = async () => {
 
 return (
     <div className={classes.root}>
-        <FormControl fullWidth className={classes.margin} variant="outlined">
+        {/* <FormControl fullWidth className={classes.margin} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-amount">Minimum donation amount</InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
@@ -131,11 +135,76 @@ return (
             startAdornment={<InputAdornment position="start">wei</InputAdornment>}
             labelWidth={194}
           />
-        </FormControl>
-        <Box textAlign='center' m={4}>
-          <Button onClick={onSubmit} variant="contained" align="center" className={buttonClassname} color="primary" disabled={loading}>
-            Create project
+        </FormControl> */}
+        <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <PostAddTwoToneIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Create A New Project To Be Funded
+        </Typography>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="Enter Project Name"
+            name="name"
+            autoFocus
+            value={values.name}
+            onChange={handleChange('name')}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="desc"
+            label="Enter Project Description"
+            id="desc"
+            value={values.desc}
+            onChange={handleChange('desc')}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="amount"
+            label="Enter Minimum Donation Amount In wei"
+            id="amount"
+            value={values.amount}
+            onChange={handleChange('amount')}
+          />
+          
+          <Button
+            onClick={onSubmit}
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Create
           </Button>
+          <Grid container>
+            <Grid item xs>
+            </Grid>
+            <Grid item>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+      <Box mt={8}>
+      </Box>
+    </Container>
+        <Box textAlign='center' m={4}>
+          {/* <Button onClick={onSubmit} variant="contained" align="center" className={buttonClassname} color="primary" disabled={loading}>
+            Create project
+          </Button> */}
           <Backdrop className={classes.backdrop} open={open}>
             <CircularProgress color="inherit" />
           </Backdrop>

@@ -9,19 +9,22 @@ import Box from '@material-ui/core/Box';
 import CardsPage from '../components/cardsPage.js';
 import Layout from '../components/Layout.js';
 import { Grid } from '@material-ui/core';
+import project from '../ethereum/project';
 
 class ProjIndex extends Component {
     static async getInitialProps() {
-        const projectAdd = await projectGenerator.methods.get_deployed_projects().call();
-        console.log(projectAdd);
-        return { projectAdd };
+        const projectAddr = await projectGenerator.methods.get_deployed_projects().call();
+        // const projectName = await projectGenerator.methods.get_deployed_projects_name().call();
+        // const projectDesc = await projectGenerator.methods.get_deployed_projects_desc().call();
+        console.log(projectAddr);
+        return { projectAddr };
     }
 
     render() {
         return (
             <Layout>
                 <Grid>
-                    <CardsPage projects={this.props.projectAdd}/>
+                    <CardsPage projects={this.props.projectAddr}/>
                 </Grid>
             </Layout>
         );
